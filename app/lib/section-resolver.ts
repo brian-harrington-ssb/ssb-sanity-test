@@ -9,6 +9,18 @@ import {ImageBannerSection} from '~/components/sections/image-banner-section';
 import {ProductInformationSection} from '~/components/sections/product-information-section';
 import {RelatedProductsSection} from '~/components/sections/related-products-section';
 import {RichtextSection} from '~/components/sections/richtext-section';
+import {SertaAdvantageSection} from '~/components/sections/serta/serta-advantage';
+import {SertaAlignmentSection} from '~/components/sections/serta/serta-alignment-section';
+import {SertaBrandHistorySection} from '~/components/sections/serta/serta-brand-history';
+import {SertaHeroCarouselSection} from '~/components/sections/serta/serta-hero-carousel';
+import {SertaPerfectSleeperFeatureSection} from '~/components/sections/serta/serta-perfect-sleeper-feature';
+import {SertaPromoBannerSection} from '~/components/sections/serta/serta-promo-banner';
+import {SertaQualityGuaranteedSection} from '~/components/sections/serta/serta-quality-guaranteed';
+import {SertaShopByCollectionSection} from '~/components/sections/serta/serta-shop-by-collection';
+import {SertaShopByTypeSection} from '~/components/sections/serta/serta-shop-by-type';
+import {SertaStoreLocatorSection} from '~/components/sections/serta/serta-store-locator';
+import {SertaTrustBadgesSection} from '~/components/sections/serta/serta-trust-badges';
+import {SertaZonedComfortSection} from '~/components/sections/serta/serta-zoned-comfort';
 
 export const sections: {
   [key: string]: React.FC<any>;
@@ -23,5 +35,17 @@ export const sections: {
   productInformationSection: ProductInformationSection,
   relatedProductsSection: RelatedProductsSection,
   richtextSection: RichtextSection,
+  sertaAdvantage: SertaAdvantageSection,
+  sertaAlignmentSection: SertaAlignmentSection,
+  sertaBrandHistory: SertaBrandHistorySection,
+  sertaHeroCarousel: SertaHeroCarouselSection,
+  sertaPerfectSleeperFeature: SertaPerfectSleeperFeatureSection,
+  sertaPromoBanner: SertaPromoBannerSection,
+  sertaQualityGuaranteed: SertaQualityGuaranteedSection,
+  sertaShopByCollection: SertaShopByCollectionSection,
+  sertaShopByType: SertaShopByTypeSection,
+  sertaStoreLocator: SertaStoreLocatorSection,
+  sertaTrustBadges: SertaTrustBadgesSection,
+  sertaZonedComfort: SertaZonedComfortSection,
   socialLinksOnly: FooterSocialLinksOnly,
 };

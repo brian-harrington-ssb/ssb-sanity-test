@@ -6,11 +6,11 @@
  *
  * NOTE: Sanity CLI will load environment variables
  */
-import {defineSanityConfig} from '~/sanity/config';
+import {defineSanityConfig} from './app/sanity/config';
 
-const projectId = process.env.PUBLIC_SANITY_STUDIO_PROJECT_ID!;
-const dataset = process.env.PUBLIC_SANITY_STUDIO_DATASET!;
-const shopifyStoreDomain = process.env.PUBLIC_STORE_DOMAIN!;
+const projectId = process.env.PUBLIC_SANITY_STUDIO_PROJECT_ID || 'gjecvxkg';
+const dataset = process.env.PUBLIC_SANITY_STUDIO_DATASET || 'production';
+const shopifyStoreDomain = process.env.PUBLIC_STORE_DOMAIN || '';
 
 export default defineSanityConfig({
   projectId,

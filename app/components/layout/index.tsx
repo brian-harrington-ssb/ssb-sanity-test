@@ -7,10 +7,9 @@ import {ClientOnly} from '../client-only';
 import {TogglePreviewMode} from '../sanity/toggle-preview-mode';
 import {VisualEditing} from '../sanity/visual-editing.client';
 import {TailwindIndicator} from '../tailwind-indicator';
-import {AnnouncementBar} from './announcement-bar';
-import {Footer} from './footer';
 import {Motion} from './motion';
-import {Header} from './header';
+import {SertaHeader} from './serta-header';
+import {SertaFooter} from './serta-footer';
 import {NavigationProgressBar} from './navigation-progress-bar.client';
 
 export type LayoutProps = {
@@ -32,12 +31,11 @@ export function AppLayout({children = null}: LayoutProps) {
         <ClientOnly fallback={null}>
           {() => <NavigationProgressBar />}
         </ClientOnly>
-        <AnnouncementBar />
-        <Header />
+        <SertaHeader />
         <main className="flex min-h-[90vh] grow flex-col gap-y-[calc(var(--space-between-template-sections)*.75)] sm:gap-y-(--space-between-template-sections)">
           {children}
         </main>
-        <Footer />
+        <SertaFooter />
         <TailwindIndicator />
         {sanityPreviewMode ? (
           <ClientOnly fallback={null}>

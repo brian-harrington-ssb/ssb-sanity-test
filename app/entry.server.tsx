@@ -67,11 +67,17 @@ export const createCspHeaders = ({projectId}: {projectId: string}) => {
     frameSrc: ["'self'"],
     imgSrc: [
       '*.sanity.io',
+      'cdn.sanity.io',
       'https://cdn.shopify.com',
+      'https://www.serta.com',
       "'self'",
       'localhost:*',
       'https://lh3.googleusercontent.com',
       'data:',
+    ],
+    mediaSrc: [
+      'https://www.serta.com',
+      "'self'",
     ],
     scriptSrc: ["'self'", 'localhost:*', 'https://cdn.shopify.com'],
   };

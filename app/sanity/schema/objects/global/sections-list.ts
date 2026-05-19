@@ -3,24 +3,24 @@ import type {InsertMenuOptions} from 'sanity';
 import {defineField} from 'sanity';
 
 const globalSections = [
-  {
-    type: 'imageBannerSection',
-  },
-  {
-    type: 'featuredCollectionSection',
-  },
-  {
-    type: 'featuredProductSection',
-  },
-  {
-    type: 'collectionListSection',
-  },
-  {
-    type: 'carouselSection',
-  },
-  {
-    type: 'richtextSection',
-  },
+  {type: 'imageBannerSection'},
+  {type: 'featuredCollectionSection'},
+  {type: 'featuredProductSection'},
+  {type: 'collectionListSection'},
+  {type: 'carouselSection'},
+  {type: 'richtextSection'},
+  {type: 'sertaPromoBanner'},
+  {type: 'sertaHeroCarousel'},
+  {type: 'sertaShopByCollection'},
+  {type: 'sertaShopByType'},
+  {type: 'sertaPerfectSleeperFeature'},
+  {type: 'sertaTrustBadges'},
+  {type: 'sertaZonedComfort'},
+  {type: 'sertaAlignmentSection'},
+  {type: 'sertaAdvantage'},
+  {type: 'sertaQualityGuaranteed'},
+  {type: 'sertaStoreLocator'},
+  {type: 'sertaBrandHistory'},
 ];
 
 const pdpSections = [

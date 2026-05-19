@@ -44,6 +44,24 @@ import imageBannerSection from './objects/sections/image-banner-section';
 import productInformationSection from './objects/sections/product-information-section';
 import relatedProductsSection from './objects/sections/related-products-section';
 import richtextSection from './objects/sections/richtext-section';
+import sertaAdvantage from './objects/sections/serta-advantage';
+import sertaAlignmentSection from './objects/sections/serta-alignment-section';
+import sertaBrandHistory from './objects/sections/serta-brand-history';
+import sertaHeroCarousel from './objects/sections/serta-hero-carousel';
+import sertaPerfectSleeperFeature from './objects/sections/serta-perfect-sleeper-feature';
+import sertaPromoBanner from './objects/sections/serta-promo-banner';
+import sertaQualityGuaranteed from './objects/sections/serta-quality-guaranteed';
+import sertaShopByCollection from './objects/sections/serta-shop-by-collection';
+import sertaShopByType from './objects/sections/serta-shop-by-type';
+import sertaStoreLocator from './objects/sections/serta-store-locator';
+import sertaTrustBadges from './objects/sections/serta-trust-badges';
+import sertaZonedComfort from './objects/sections/serta-zoned-comfort';
+import sertaAdvantageFeature from './objects/serta/advantage-feature';
+import sertaCollectionItem from './objects/serta/collection-item';
+import sertaHeroSlide from './objects/serta/hero-slide';
+import sertaMattressType from './objects/serta/mattress-type';
+import sertaQualityItem from './objects/serta/quality-item';
+import sertaTrustBadge from './objects/serta/trust-badge';
 import inventory from './objects/shopify/inventory';
 import options from './objects/shopify/options';
 import placeholderString from './objects/shopify/placeholder-string';
@@ -82,8 +100,29 @@ const sections = [
   richtextSection,
   collectionProductGrid,
   collectionBanner,
+  sertaPromoBanner,
+  sertaHeroCarousel,
+  sertaShopByCollection,
+  sertaShopByType,
+  sertaPerfectSleeperFeature,
+  sertaTrustBadges,
+  sertaZonedComfort,
+  sertaAlignmentSection,
+  sertaAdvantage,
+  sertaQualityGuaranteed,
+  sertaStoreLocator,
+  sertaBrandHistory,
 ];
 const footers = [socialLinksOnly];
+const sertaObjects = [
+  sertaHeroSlide,
+  sertaCollectionItem,
+  sertaMattressType,
+  sertaTrustBadge,
+  sertaAdvantageFeature,
+  sertaQualityItem,
+];
+
 const objects = [
   link,
   padding,
@@ -122,6 +161,7 @@ const objects = [
 ];
 
 export const schemaTypes = [
+  ...sertaObjects,
   ...objects,
   ...documents,
   ...sections,

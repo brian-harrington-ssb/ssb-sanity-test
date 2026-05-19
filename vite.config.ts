@@ -49,6 +49,7 @@ export default defineConfig({
     ],
   },
   ssr: {
+    noExternal: ['lodash', 'react-is', '@sanity/mutate'],
     resolve: {
       conditions: ['workerd', 'worker'],
     },
@@ -57,8 +58,15 @@ export default defineConfig({
         '@sanity/core-loader',
         '@sanity/image-url',
         '@sanity/visual-editing',
+        '@sanity/visual-editing/react',
         'radix-ui',
         'react-router',
+        'react/compiler-runtime',
+        'react-compiler-runtime',
+        '@sanity/ui',
+        'react-is',
+        '@sanity/mutate',
+        'lodash',
       ],
     },
   },
