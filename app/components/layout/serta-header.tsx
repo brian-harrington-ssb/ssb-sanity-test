@@ -10,11 +10,12 @@ const PROMO = [
 ];
 
 const MAIN_NAV = [
-  {label: 'Mattresses', href: '/collections/mattresses', hasMega: true},
-  {label: 'Bed Frames',  href: '/collections/bed-frames'},
-  {label: 'Pillows',     href: '/collections/pillows'},
-  {label: 'Bedding',     href: '/collections/bedding'},
-  {label: 'Sale',        href: '/collections/sale', highlight: true},
+  {label: 'Mattresses',   href: '/collections/mattresses', hasMega: true},
+  {label: 'Bed Frames',   href: '/collections/adjustable-bed-frames'},
+  {label: 'Pillows',      href: '/collections/pillows'},
+  {label: 'Bedding',      href: '/collections/bedding'},
+  {label: 'Sale',         href: '/collections/sale', highlight: true},
+  {label: 'Mattress Quiz', href: '/pages/mattress-quiz'},
 ];
 
 const MEGA_SIZES = [
@@ -29,12 +30,12 @@ const MEGA_SIZES = [
 const MEGA_COLS = [
   {
     name:  'Serta Classic Collection',
-    image: 'https://www.serta.com/adobe/assets/urn:aaid:aem:da016ab7-458e-4848-ba5a-32a01f5c2be7/as/Classic.png',
+    image: 'https://www.serta.com/s/files/1/0644/1294/2545/files/Serta_Classic_PDP_Hero_L1DorianFirm_2000x2000_d8299cf6-6f1d-4804-bd1c-8d559fefe2a5.jpg?v=1739998622',
     links: [{label: 'Serta Classic', href: '/products/classic-mattress'}],
   },
   {
     name:  'iSeries NXG Collection',
-    image: 'https://www.serta.com/adobe/assets/urn:aaid:aem:7a46b9b8-aee4-4e57-9806-ab13fc4cf9b6/as/iSeries.png',
+    image: 'https://www.serta.com/s/files/1/0644/1294/2545/collections/MattressCollectionBanner.jpg?v=1760042842',
     links: [
       {label: 'iSeries NXG Hybrid', href: '/collections/iseries-nxg-collection'},
       {label: 'iSeries NXG Foam',   href: '/collections/iseries-nxg-collection'},
@@ -43,7 +44,7 @@ const MEGA_COLS = [
   },
   {
     name:  'Perfect Sleeper Collection',
-    image: 'https://www.serta.com/adobe/assets/urn:aaid:aem:f6ae8ad5-8593-4b8d-995c-a0e8344a7621/as/26_Serta_Launch_PerfectSleeper_Site_ShopByCollection_Thumbnail.avif',
+    image: 'https://www.serta.com/s/files/1/0644/1294/2545/collections/PLP_header_ce323ff0-3f58-429f-b9d7-bce044f43f0a.webp?v=1741374916',
     links: [
       {label: 'Perfect Sleeper Innerspring', href: '/collections/perfect-sleeper-assortment'},
       {label: 'Perfect Sleeper Hybrid',      href: '/collections/perfect-sleeper-assortment'},
@@ -52,7 +53,7 @@ const MEGA_COLS = [
   },
   {
     name:  'iComfort Collection',
-    image: 'https://www.serta.com/adobe/assets/urn:aaid:aem:406ea8b5-f6ef-470d-ae8d-eea4ef046103/as/iComfort.png',
+    image: 'https://www.serta.com/s/files/1/0644/1294/2545/collections/1440-PLP_Hero_iComfort.webp?v=1741375258',
     links: [
       {label: 'iComfort',    href: '/collections/icomfort-assortment'},
       {label: 'iComfortPro', href: '/collections/icomfort-assortment'},
@@ -61,7 +62,7 @@ const MEGA_COLS = [
   },
 ];
 
-const MEGA_HERO = 'https://www.serta.com/adobe/assets/urn:aaid:aem:c2aa8cd2-a1ac-412c-991f-5d42c61a5152/as/SE24_Stretch_Sheep.jpg';
+const MEGA_HERO = 'https://www.serta.com/s/files/1/0644/1294/2545/files/SE24_NL_Foundation_Queen_LP_Silo_Angle.jpg?v=1729018490';
 
 export function SertaHeader() {
   const [megaOpen, setMegaOpen]     = useState(false);
@@ -163,13 +164,13 @@ export function SertaHeader() {
             <p style={{fontSize: 8, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#20374D', marginBottom: 4, whiteSpace: 'nowrap'}}>
               WE MAKE THE WORLD&rsquo;S BEST MATTRESS.™
             </p>
-            <img src="/serta-logo.svg" alt="Serta" width="74" height="59" style={{display: 'block'}} />
+            <img src="https://www.serta.com/icons/serta-color-navy-text.svg" alt="Serta" width="74" style={{display: 'block', height: 'auto'}} />
           </Link>
 
-          {/* Right: quiz + cart */}
+          {/* Right: search + cart */}
           <div style={{display: 'flex', alignItems: 'center', gap: 20, justifyContent: 'flex-end'}}>
-            <Link to="/pages/mattress-quiz" className="hidden md:block" style={{fontSize: 14, fontWeight: 600, color: '#181D27', textDecoration: 'none', whiteSpace: 'nowrap'}}>
-              Mattress Quiz
+            <Link to="/search" aria-label="Search" className="hidden md:flex" style={{color: '#181D27', display: 'flex', alignItems: 'center'}}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </Link>
             <CartDrawer />
           </div>
@@ -193,6 +194,12 @@ export function SertaHeader() {
           </nav>
         )}
       </header>
+
+      {/* ── Pencil banner ── */}
+      <div style={{backgroundColor: '#20374D', color: '#fff', textAlign: 'center', padding: '10px 24px', fontSize: 13, fontWeight: 500}}>
+        <strong>Memorial Day Sale</strong>: Save up to $600 on select mattress + baselogic™ adjustable sets&nbsp;|&nbsp;
+        <Link to="/collections/sale" style={{color: '#fff', fontWeight: 700, textDecoration: 'underline'}}>Shop now</Link>
+      </div>
 
       {/* ── Mega menu ── */}
       {megaOpen && (

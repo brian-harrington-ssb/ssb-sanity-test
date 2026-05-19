@@ -2910,6 +2910,20 @@
           },
           "optional": true
         },
+        "backgroundColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "textColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "image": {
           "type": "objectAttribute",
           "value": {
@@ -3022,6 +3036,13 @@
           },
           "optional": true
         },
+        "backgroundColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "image": {
           "type": "objectAttribute",
           "value": {
@@ -3099,6 +3120,13 @@
             "value": "sertaQualityGuaranteed"
           }
         },
+        "headline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "backgroundColor": {
           "type": "objectAttribute",
           "value": {
@@ -3143,6 +3171,20 @@
             "type": "string",
             "value": "sertaAdvantage"
           }
+        },
+        "eyebrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "headline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         },
         "backgroundColor": {
           "type": "objectAttribute",
@@ -3203,6 +3245,13 @@
           },
           "optional": true
         },
+        "body": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "ctaText": {
           "type": "objectAttribute",
           "value": {
@@ -3211,6 +3260,13 @@
           "optional": true
         },
         "ctaHref": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "backgroundColor": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -3315,6 +3371,13 @@
           },
           "optional": true
         },
+        "backgroundColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "image": {
           "type": "objectAttribute",
           "value": {
@@ -3392,6 +3455,20 @@
             "value": "sertaTrustBadges"
           }
         },
+        "eyebrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "headline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "backgroundColor": {
           "type": "objectAttribute",
           "value": {
@@ -3466,6 +3543,13 @@
           "optional": true
         },
         "ctaHref": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "backgroundColor": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -3556,6 +3640,20 @@
             "value": "sertaShopByType"
           }
         },
+        "eyebrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "headline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
         "showShopAll": {
           "type": "objectAttribute",
           "value": {
@@ -3600,6 +3698,20 @@
             "type": "string",
             "value": "sertaShopByCollection"
           }
+        },
+        "eyebrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "headline": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
         },
         "showShopAll": {
           "type": "objectAttribute",
@@ -3727,6 +3839,13 @@
           "optional": true
         },
         "backgroundColor": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "textColor": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -8224,6 +8343,13 @@
           "optional": true
         },
         "desc": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "ctaLabel": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

@@ -5,6 +5,7 @@ export default defineField({
   title: 'Quality Guaranteed',
   type: 'object',
   fields: [
+    defineField({name: 'headline', type: 'string', title: 'Headline', initialValue: 'Quality guaranteed'}),
     defineField({
       name: 'backgroundColor',
       type: 'string',

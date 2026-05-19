@@ -20,6 +20,8 @@ type CollectionItem = {
 };
 
 type SertaShopByCollectionData = {
+  eyebrow?: string | null;
+  headline?: string | null;
   showShopAll?: boolean | null;
   collections?: CollectionItem[] | null;
 };
@@ -32,56 +34,121 @@ export function SertaShopByCollectionSection({
   encodeDataAttribute?: EncodeDataAttributeCallback;
 }) {
   const collections = data.collections ?? [];
+  const eyebrow = data.eyebrow ?? 'Shop by collection';
+  const headline = data.headline ?? 'Thoughtfully designed for every sleeper';
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-8 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Shop by Collection</h2>
-        {data.showShopAll && (
-          <a className="text-sm font-semibold text-blue-600 hover:underline" href="/collections">
-            Shop All
-          </a>
-        )}
-      </div>
+    <div style={{backgroundColor: '#F7F4F0', padding: '60px 0'}}>
+      <div style={{maxWidth: 1280, margin: '0 auto', padding: '0 24px'}}>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {collections.map((collection, index) => (
-          <a
-            className={`group block overflow-hidden rounded-lg border border-gray-200 hover:shadow-md transition-shadow ${collection.featured ? 'ring-2 ring-blue-500' : ''}`}
-            data-sanity={encodeDataAttribute?.(`collections.${index}`)}
-            href={collection.href ?? '#'}
-            key={index}
-          >
-            {collection.image?.asset?._ref ? (
-              <div className="aspect-square overflow-hidden bg-gray-50">
-                <SanityImage
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  data={collection.image}
-                  showBorder={false}
-                  showShadow={false}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
+        {/* Section header */}
+        <div style={{textAlign: 'center', marginBottom: 40}}>
+          <p style={{fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#20374D', marginBottom: 10}}>
+            {eyebrow}
+          </p>
+          <h2 style={{fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 700, color: '#181D27', margin: 0}}>
+            {headline}
+          </h2>
+        </div>
+
+        {/* Cards — horizontal scroll on mobile */}
+        <div
+          style={{
+            display: 'flex',
+            gap: 20,
+            overflowX: 'auto',
+            paddingBottom: 8,
+            scrollbarWidth: 'none',
+          }}
+        >
+          {collections.map((collection, index) => (
+            <a
+              data-sanity={encodeDataAttribute?.(`collections.${index}`)}
+              href={collection.href ?? '#'}
+              key={index}
+              style={{
+                flex: '0 0 220px',
+                maxWidth: 260,
+                minWidth: 200,
+                borderRadius: 8,
+                overflow: 'hidden',
+                backgroundColor: '#FFFFFF',
+                textDecoration: 'none',
+                border: collection.featured ? '2px solid #20374D' : '1px solid #E5E7EB',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'box-shadow 0.2s',
+              }}
+            >
+              {/* Image */}
+              {collection.image?.asset?._ref ? (
+                <div style={{aspectRatio: '1/1', overflow: 'hidden', backgroundColor: '#F3F0EC'}}>
+                  <SanityImage
+                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                    data={collection.image}
+                    showBorder={false}
+                    showShadow={false}
+                    sizes="(max-width: 640px) 80vw, 260px"
+                  />
+                </div>
+              ) : collection.imageUrl ? (
+                <div style={{aspectRatio: '1/1', overflow: 'hidden', backgroundColor: '#F3F0EC'}}>
+                  <img
+                    alt={collection.name ?? ''}
+                    src={collection.imageUrl}
+                    style={{width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s'}}
+                  />
+                </div>
+              ) : null}
+
+              {/* Body */}
+              <div style={{padding: '16px 16px 20px'}}>
+                {collection.name && (
+                  <h5 style={{fontSize: 15, fontWeight: 700, color: '#181D27', margin: '0 0 8px'}}>{collection.name}</h5>
+                )}
+                {collection.description && (
+                  <p style={{fontSize: 13, color: '#6B7280', margin: '0 0 14px', lineHeight: 1.5}}>{collection.description}</p>
+                )}
+                {collection.price && (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#20374D',
+                    textDecoration: 'none',
+                  }}>
+                    {collection.price}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                  </span>
+                )}
               </div>
-            ) : collection.imageUrl ? (
-              <div className="aspect-square overflow-hidden bg-gray-50">
-                <img alt={collection.name ?? ''} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src={collection.imageUrl} />
-              </div>
-            ) : null}
-            <div className="p-4">
-              {collection.name && (
-                <h3 className="font-semibold text-gray-900">{collection.name}</h3>
-              )}
-              {collection.description && (
-                <p className="mt-1 text-sm text-gray-500">{collection.description}</p>
-              )}
-              {collection.price && (
-                <p className="mt-2 text-sm font-medium text-gray-700">
-                  From {collection.price}
-                </p>
-              )}
-            </div>
-          </a>
-        ))}
+            </a>
+          ))}
+        </div>
+
+        {/* Shop All CTA */}
+        {data.showShopAll && (
+          <div style={{textAlign: 'center', marginTop: 36}}>
+            <a
+              href="/collections/mattresses"
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#20374D',
+                color: '#FFFFFF',
+                padding: '13px 36px',
+                borderRadius: 4,
+                fontSize: 14,
+                fontWeight: 700,
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
+              }}
+            >
+              Shop All
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

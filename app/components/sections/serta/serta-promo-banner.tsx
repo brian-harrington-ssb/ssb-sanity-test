@@ -5,6 +5,7 @@ type SertaPromoBannerData = {
   ctaText?: string | null;
   ctaUrl?: string | null;
   backgroundColor?: string | null;
+  textColor?: string | null;
 };
 
 export function SertaPromoBannerSection({
@@ -14,25 +15,49 @@ export function SertaPromoBannerSection({
   data: SertaPromoBannerData;
   encodeDataAttribute?: EncodeDataAttributeCallback;
 }) {
+  const bg = data.backgroundColor ?? '#00131F';
+  const fg = data.textColor ?? '#FFFFFF';
+
   return (
     <div
-      className="w-full py-3 px-4 text-center"
-      style={data.backgroundColor ? {backgroundColor: data.backgroundColor} : undefined}
+      style={{
+        backgroundColor: bg,
+        color: fg,
+        width: '100%',
+        padding: '10px 16px',
+        textAlign: 'center',
+      }}
     >
-      <div className="container mx-auto flex flex-wrap items-center justify-center gap-4">
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: '0 auto',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 8,
+        }}
+      >
         {data.message && (
           <p
-            className="text-sm font-medium"
             data-sanity={encodeDataAttribute?.('message')}
+            style={{fontSize: 13, fontWeight: 500, margin: 0, color: fg}}
           >
             {data.message}
           </p>
         )}
         {data.ctaText && data.ctaUrl && (
           <a
-            className="text-sm font-semibold underline underline-offset-2 hover:opacity-80"
             data-sanity={encodeDataAttribute?.('ctaUrl')}
             href={data.ctaUrl}
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: '#FFD966',
+              textDecoration: 'underline',
+              textUnderlineOffset: 2,
+            }}
           >
             {data.ctaText}
           </a>

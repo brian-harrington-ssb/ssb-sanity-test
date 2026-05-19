@@ -19,6 +19,8 @@ type TrustBadge = {
 };
 
 type SertaTrustBadgesData = {
+  eyebrow?: string | null;
+  headline?: string | null;
   backgroundColor?: string | null;
   badges?: TrustBadge[] | null;
 };
@@ -31,47 +33,80 @@ export function SertaTrustBadgesSection({
   encodeDataAttribute?: EncodeDataAttributeCallback;
 }) {
   const badges = data.badges ?? [];
+  const eyebrow = data.eyebrow ?? 'Shop with confidence';
+  const headline = data.headline ?? 'Buy online from a mattress company you can trust';
+
+  const bg = data.backgroundColor ?? '#E8F0EC';
 
   return (
-    <div
-      className="w-full py-12"
-      style={data.backgroundColor ? {backgroundColor: data.backgroundColor} : undefined}
-    >
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div style={{backgroundColor: bg, padding: '60px 0'}}>
+      <div style={{maxWidth: 1280, margin: '0 auto', padding: '0 24px'}}>
+
+        {/* Section header */}
+        <div style={{textAlign: 'center', marginBottom: 48}}>
+          <p style={{fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#20374D', marginBottom: 10}}>
+            {eyebrow}
+          </p>
+          <h2 style={{fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 700, color: '#181D27', margin: 0}}>
+            {headline}
+          </h2>
+        </div>
+
+        {/* Badge grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: 24,
+          }}
+        >
           {badges.map((badge, index) => (
             <div
-              className="flex flex-col items-center gap-3 text-center"
               data-sanity={encodeDataAttribute?.(`badges.${index}`)}
               key={index}
+              style={{display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 12}}
             >
               {badge.icon?.asset?._ref ? (
-                <div className="h-16 w-16 flex-shrink-0">
+                <div style={{width: 120, height: 120, flexShrink: 0}}>
                   <SanityImage
                     className="h-full w-full object-contain"
                     data={badge.icon}
                     showBorder={false}
                     showShadow={false}
-                    sizes="64px"
+                    sizes="120px"
                   />
                 </div>
               ) : badge.iconUrl ? (
-                <div className="h-16 w-16 flex-shrink-0">
-                  <img alt={badge.heading ?? ''} className="h-full w-full object-contain" src={badge.iconUrl} />
+                <div style={{width: 120, height: 120, flexShrink: 0}}>
+                  <img alt={badge.heading ?? ''} src={badge.iconUrl} style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                 </div>
               ) : null}
+
               {badge.heading && (
-                <h3 className="font-semibold text-gray-900">{badge.heading}</h3>
+                <h6 style={{fontSize: 13, fontWeight: 700, color: '#181D27', margin: 0, letterSpacing: '0.04em', textTransform: 'uppercase'}}>
+                  {badge.heading}
+                </h6>
               )}
               {badge.body && (
-                <p className="text-sm text-gray-600">{badge.body}</p>
+                <p style={{fontSize: 13, color: '#6B7280', margin: 0, lineHeight: 1.6, maxWidth: 220}}>
+                  {badge.body}
+                </p>
               )}
               {badge.link && badge.linkLabel && (
                 <a
-                  className="text-sm font-medium text-blue-600 hover:underline"
                   href={badge.link}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: '#20374D',
+                    textDecoration: 'none',
+                  }}
                 >
                   {badge.linkLabel}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </a>
               )}
             </div>

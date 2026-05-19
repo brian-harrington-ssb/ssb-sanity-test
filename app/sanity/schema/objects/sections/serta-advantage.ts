@@ -5,6 +5,8 @@ export default defineField({
   title: 'Serta Advantage',
   type: 'object',
   fields: [
+    defineField({name: 'eyebrow', type: 'string', title: 'Eyebrow', initialValue: 'The Serta advantage'}),
+    defineField({name: 'headline', type: 'string', title: 'Headline', initialValue: 'Comfortable, supportive, and cooling sleep'}),
     defineField({
       name: 'backgroundColor',
       type: 'string',

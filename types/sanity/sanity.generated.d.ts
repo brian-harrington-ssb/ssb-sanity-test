@@ -465,6 +465,8 @@ export type SertaBrandHistory = {
   body?: string;
   ctaText?: string;
   ctaHref?: string;
+  backgroundColor?: string;
+  textColor?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -483,6 +485,7 @@ export type SertaStoreLocator = {
   body?: string;
   ctaText?: string;
   ctaHref?: string;
+  backgroundColor?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -496,6 +499,7 @@ export type SertaStoreLocator = {
 
 export type SertaQualityGuaranteed = {
   _type: 'sertaQualityGuaranteed';
+  headline?: string;
   backgroundColor?: string;
   items?: Array<
     {
@@ -506,6 +510,8 @@ export type SertaQualityGuaranteed = {
 
 export type SertaAdvantage = {
   _type: 'sertaAdvantage';
+  eyebrow?: string;
+  headline?: string;
   backgroundColor?: string;
   features?: Array<
     {
@@ -518,8 +524,10 @@ export type SertaAlignmentSection = {
   _type: 'sertaAlignmentSection';
   eyebrow?: string;
   headline?: string;
+  body?: string;
   ctaText?: string;
   ctaHref?: string;
+  backgroundColor?: string;
   videoUrl?: string;
   poster?: {
     asset?: SanityImageAssetReference;
@@ -536,6 +544,7 @@ export type SertaZonedComfort = {
   eyebrow?: string;
   headline?: string;
   body?: string;
+  backgroundColor?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -549,6 +558,8 @@ export type SertaZonedComfort = {
 
 export type SertaTrustBadges = {
   _type: 'sertaTrustBadges';
+  eyebrow?: string;
+  headline?: string;
   backgroundColor?: string;
   badges?: Array<
     {
@@ -564,6 +575,7 @@ export type SertaPerfectSleeperFeature = {
   body?: string;
   ctaText?: string;
   ctaHref?: string;
+  backgroundColor?: string;
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -578,6 +590,8 @@ export type SertaPerfectSleeperFeature = {
 
 export type SertaShopByType = {
   _type: 'sertaShopByType';
+  eyebrow?: string;
+  headline?: string;
   showShopAll?: boolean;
   types?: Array<
     {
@@ -588,6 +602,8 @@ export type SertaShopByType = {
 
 export type SertaShopByCollection = {
   _type: 'sertaShopByCollection';
+  eyebrow?: string;
+  headline?: string;
   showShopAll?: boolean;
   collections?: Array<
     {
@@ -614,6 +630,7 @@ export type SertaPromoBanner = {
   ctaText?: string;
   ctaUrl?: string;
   backgroundColor?: string;
+  textColor?: string;
 };
 
 export type CollectionBannerSection = {
@@ -1372,6 +1389,7 @@ export type SertaMattressType = {
     _type: 'image';
   };
   desc?: string;
+  ctaLabel?: string;
   href?: string;
   imageUrl?: string;
 };

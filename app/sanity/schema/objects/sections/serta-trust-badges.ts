@@ -5,6 +5,8 @@ export default defineField({
   title: 'Trust Badges',
   type: 'object',
   fields: [
+    defineField({name: 'eyebrow', type: 'string', title: 'Eyebrow', initialValue: 'Shop with confidence'}),
+    defineField({name: 'headline', type: 'string', title: 'Headline', initialValue: "Buy online from a mattress company you can trust"}),
     defineField({
       name: 'backgroundColor',
       type: 'string',

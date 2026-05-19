@@ -13,6 +13,7 @@ type SertaZonedComfortData = {
   eyebrow?: string | null;
   headline?: string | null;
   body?: string | null;
+  backgroundColor?: string | null;
   image?: SanityImageData;
   imageUrl?: string | null;
   imageAlt?: string | null;
@@ -25,43 +26,77 @@ export function SertaZonedComfortSection({
   data: SertaZonedComfortData;
   encodeDataAttribute?: EncodeDataAttributeCallback;
 }) {
+  const bg = data.backgroundColor ?? '#F7F4F0';
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
-        <div className="flex flex-1 flex-col gap-4">
+    <div style={{backgroundColor: bg, padding: '60px 0'}}>
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: '0 auto',
+          padding: '0 24px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 48,
+          alignItems: 'center',
+        }}
+      >
+        {/* Text left */}
+        <div
+          style={{
+            flex: '1 1 400px',
+            minWidth: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+          }}
+        >
           {data.eyebrow && (
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+            <p
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#20374D',
+                margin: 0,
+              }}
+            >
               {data.eyebrow}
             </p>
           )}
           {data.headline && (
             <h2
-              className="text-3xl font-bold text-gray-900"
               data-sanity={encodeDataAttribute?.('headline')}
+              style={{fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 700, color: '#181D27', margin: 0, lineHeight: 1.2}}
             >
               {data.headline}
             </h2>
           )}
           {data.body && (
-            <p className="text-lg text-gray-600">{data.body}</p>
+            <p style={{fontSize: 15, color: '#6B7280', margin: 0, lineHeight: 1.7}}>{data.body}</p>
           )}
         </div>
 
+        {/* Image right */}
         {data.image?.asset?._ref ? (
-          <div className="flex-1">
+          <div style={{flex: '1 1 400px', minWidth: 0, borderRadius: 8, overflow: 'hidden'}}>
             <SanityImage
               alt={data.imageAlt ?? undefined}
-              className="w-full rounded-lg object-cover"
+              className="w-full object-cover"
               data={data.image}
-              dataSanity={encodeDataAttribute?.('image')}
               showBorder={false}
               showShadow={false}
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         ) : data.imageUrl ? (
-          <div className="flex-1">
-            <img alt={data.imageAlt ?? ''} className="w-full rounded-lg object-cover" src={data.imageUrl} />
+          <div style={{flex: '1 1 400px', minWidth: 0, borderRadius: 8, overflow: 'hidden'}}>
+            <img
+              alt={data.imageAlt ?? ''}
+              src={data.imageUrl}
+              style={{width: '100%', display: 'block', objectFit: 'cover'}}
+            />
           </div>
         ) : null}
       </div>

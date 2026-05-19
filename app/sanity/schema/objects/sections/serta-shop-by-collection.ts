@@ -5,6 +5,8 @@ export default defineField({
   title: 'Shop By Collection',
   type: 'object',
   fields: [
+    defineField({name: 'eyebrow', type: 'string', title: 'Eyebrow', initialValue: 'Shop by collection'}),
+    defineField({name: 'headline', type: 'string', title: 'Headline', initialValue: 'Thoughtfully designed for every sleeper'}),
     defineField({
       name: 'showShopAll',
       type: 'boolean',

@@ -12,7 +12,15 @@ export default defineField({
       name: 'backgroundColor',
       type: 'string',
       title: 'Background Color',
-      description: 'Hex color, e.g. #001E6C',
+      description: 'Hex color, e.g. #00131F',
+      initialValue: '#00131F',
+    }),
+    defineField({
+      name: 'textColor',
+      type: 'string',
+      title: 'Text Color',
+      description: 'Hex color, e.g. #FFFFFF',
+      initialValue: '#FFFFFF',
     }),
   ],
   preview: {

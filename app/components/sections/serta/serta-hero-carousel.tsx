@@ -1,6 +1,17 @@
 import type {EncodeDataAttributeCallback} from '@sanity/react-loader';
 
+import Autoplay from 'embla-carousel-autoplay';
+import {useMemo} from 'react';
+
 import {SanityImage} from '~/components/sanity/sanity-image';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPagination,
+  CarouselPrevious,
+} from '~/components/ui/carousel';
 
 type SanityImageData = {
   _type: 'image';
@@ -36,67 +47,141 @@ export function SertaHeroCarouselSection({
   data: SertaHeroCarouselData;
   encodeDataAttribute?: EncodeDataAttributeCallback;
 }) {
-  const firstSlide = data.slides?.[0];
+  const {slides, showArrows, showDots, autoPlayInterval} = data;
+  const hasMultiple = (slides?.length ?? 0) > 1;
 
-  if (!firstSlide) return null;
+  const plugins = useMemo(
+    () =>
+      hasMultiple
+        ? [Autoplay({delay: autoPlayInterval ?? 5000, stopOnInteraction: false})]
+        : [],
+    [hasMultiple, autoPlayInterval],
+  );
 
-  const isDark = firstSlide.theme === 'dark';
+  if (!slides?.length) return null;
 
   return (
-    <div
-      className="relative w-full overflow-hidden"
-      style={firstSlide.backgroundColor ? {backgroundColor: firstSlide.backgroundColor} : undefined}
+    <Carousel
+      className="[--slide-spacing:0]"
+      opts={{loop: true, active: hasMultiple}}
+      plugins={plugins}
+      style={{'--slides-per-view': 1} as React.CSSProperties}
     >
-      {firstSlide.image?.asset?._ref ? (
-        <div className="absolute inset-0">
-          <SanityImage
-            className="h-full w-full object-cover"
-            data={firstSlide.image}
-            showBorder={false}
-            showShadow={false}
-            sizes="100vw"
-          />
-        </div>
-      ) : firstSlide.imageUrl ? (
-        <div className="absolute inset-0">
-          <img alt={firstSlide.label ?? ''} className="h-full w-full object-cover" src={firstSlide.imageUrl} />
-        </div>
-      ) : null}
+      <div className="relative">
+        <CarouselContent>
+          {slides.map((slide, index) => {
+            const isLight = slide.theme === 'light';
+            const bgColor = slide.backgroundColor ?? '#1B3247';
+            const hasImage = !!(slide.image?.asset?._ref || slide.imageUrl);
 
-      <div
-        className={`relative z-10 container mx-auto flex min-h-[480px] flex-col justify-center px-6 py-16 ${firstSlide.imageCentered ? 'items-center text-center' : 'items-start'}`}
-      >
-        {firstSlide.label && (
-          <p
-            className={`mb-2 text-sm font-semibold uppercase tracking-widest ${isDark ? 'text-white/80' : 'text-gray-600'}`}
-          >
-            {firstSlide.label}
-          </p>
-        )}
-        {firstSlide.headline && (
-          <h2
-            className={`mb-4 text-4xl font-bold leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}
-            data-sanity={encodeDataAttribute?.('slides.0.headline')}
-          >
-            {firstSlide.headline}
-          </h2>
-        )}
-        {firstSlide.body && (
-          <p
-            className={`mb-6 max-w-lg text-lg ${isDark ? 'text-white/90' : 'text-gray-700'}`}
-          >
-            {firstSlide.body}
-          </p>
-        )}
-        {firstSlide.cta && firstSlide.ctaHref && (
-          <a
-            className="inline-block rounded bg-white px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
-            href={firstSlide.ctaHref}
-          >
-            {firstSlide.cta}
-          </a>
+            return (
+              <CarouselItem key={index}>
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{
+                    backgroundColor: bgColor,
+                    minHeight: 'clamp(400px, 55vw, 600px)',
+                  }}
+                >
+                  {/* Full-bleed background image */}
+                  {slide.image?.asset?._ref ? (
+                    <div className="absolute inset-0">
+                      <SanityImage
+                        className="h-full w-full object-cover"
+                        data={slide.image}
+                        showBorder={false}
+                        showShadow={false}
+                        sizes="100vw"
+                      />
+                    </div>
+                  ) : slide.imageUrl ? (
+                    <div className="absolute inset-0">
+                      <img
+                        alt={slide.label ?? ''}
+                        className="h-full w-full object-cover"
+                        src={slide.imageUrl}
+                      />
+                    </div>
+                  ) : null}
+
+                  {/* Gradient overlay for readability on image slides */}
+                  {hasImage && !isLight && (
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          'linear-gradient(to right, rgba(11,31,48,0.75) 0%, rgba(11,31,48,0.45) 55%, transparent 100%)',
+                      }}
+                    />
+                  )}
+
+                  {/* Slide content */}
+                  <div
+                    className={`relative z-10 mx-auto flex h-full flex-col justify-center px-8 py-14 md:px-16 lg:max-w-[1280px] lg:px-24 ${
+                      slide.imageCentered ? 'items-center text-center' : 'items-start'
+                    }`}
+                    style={{minHeight: 'inherit'}}
+                  >
+                    {slide.label && (
+                      <h6
+                        className="mb-3 text-xs font-bold uppercase tracking-[0.18em]"
+                        style={{color: isLight ? '#20374D' : '#FFD966'}}
+                      >
+                        {slide.label}
+                      </h6>
+                    )}
+                    {slide.headline && (
+                      <h2
+                        className="mb-4 max-w-xl text-3xl font-bold leading-tight md:text-4xl lg:text-5xl"
+                        data-sanity={encodeDataAttribute?.(`slides.${index}.headline`)}
+                        style={{color: isLight ? '#181D27' : '#FFFFFF'}}
+                      >
+                        {slide.headline}
+                      </h2>
+                    )}
+                    {slide.body && (
+                      <p
+                        className="mb-7 max-w-md text-base md:text-lg"
+                        style={{color: isLight ? '#414651' : 'rgba(255,255,255,0.87)'}}
+                      >
+                        {slide.body}
+                      </p>
+                    )}
+                    {slide.cta && slide.ctaHref && (
+                      <a
+                        href={slide.ctaHref}
+                        style={{
+                          display: 'inline-block',
+                          backgroundColor: isLight ? '#20374D' : '#FFFFFF',
+                          color: isLight ? '#FFFFFF' : '#20374D',
+                          padding: '12px 28px',
+                          borderRadius: 4,
+                          fontSize: 14,
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          letterSpacing: '0.02em',
+                          transition: 'opacity 0.15s',
+                        }}
+                      >
+                        {slide.cta}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+
+        {showArrows && hasMultiple && (
+          <>
+            <CarouselPrevious />
+            <CarouselNext />
+          </>
         )}
       </div>
-    </div>
+
+      {showDots && hasMultiple && <CarouselPagination />}
+    </Carousel>
   );
 }

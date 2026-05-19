@@ -7,8 +7,16 @@ export default defineField({
   fields: [
     defineField({name: 'eyebrow', type: 'string'}),
     defineField({name: 'headline', type: 'string'}),
+    defineField({name: 'body', type: 'text', rows: 4}),
     defineField({name: 'ctaText', type: 'string', title: 'CTA Label'}),
     defineField({name: 'ctaHref', type: 'string', title: 'CTA URL'}),
+    defineField({
+      name: 'backgroundColor',
+      type: 'string',
+      title: 'Background Color',
+      description: 'Hex color, e.g. #FFFFFF',
+      initialValue: '#FFFFFF',
+    }),
     defineField({
       name: 'videoUrl',
       type: 'string',
