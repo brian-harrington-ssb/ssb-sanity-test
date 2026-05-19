@@ -162,15 +162,6 @@ export const IMAGE_BANNER_SECTION_FRAGMENT = defineQuery(`{
   settings ${SECTION_SETTINGS_FRAGMENT}
 }`);
 
-export const SERTA_PROMO_BANNER_FRAGMENT = defineQuery(`{
-  _key,
-  _type,
-  message,
-  ctaText,
-  ctaUrl,
-  backgroundColor
-}`);
-
 export const SERTA_HERO_CAROUSEL_FRAGMENT = defineQuery(`{
   _key,
   _type,
@@ -343,7 +334,6 @@ export const SECTIONS_FRAGMENT = () =>
     _type == 'featuredProductSection' => ${FEATURED_PRODUCT_SECTION_FRAGMENT},
     _type == 'featuredCollectionSection' => ${FEATURED_COLLECTION_SECTION_FRAGMENT},
     _type == 'imageBannerSection' => ${IMAGE_BANNER_SECTION_FRAGMENT},
-    _type == 'sertaPromoBanner' => ${SERTA_PROMO_BANNER_FRAGMENT},
     _type == 'sertaHeroCarousel' => ${SERTA_HERO_CAROUSEL_FRAGMENT},
     _type == 'sertaShopByCollection' => ${SERTA_SHOP_BY_COLLECTION_FRAGMENT},
     _type == 'sertaShopByType' => ${SERTA_SHOP_BY_TYPE_FRAGMENT},

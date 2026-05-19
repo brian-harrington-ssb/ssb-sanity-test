@@ -9,7 +9,6 @@ const globalSections = [
   {type: 'collectionListSection'},
   {type: 'carouselSection'},
   {type: 'richtextSection'},
-  {type: 'sertaPromoBanner'},
   {type: 'sertaHeroCarousel'},
   {type: 'sertaShopByCollection'},
   {type: 'sertaShopByType'},

@@ -13,8 +13,9 @@ import {structureTool} from 'sanity/structure';
 import IconPreview from './components/icons/preview-icon';
 import {
   SANITY_API_VERSION,
-  SANITY_STUDIO_PREVIEW_URL,
   SANITY_STUDIO_PATH,
+  SANITY_STUDIO_PREVIEW_ORIGIN,
+  SANITY_STUDIO_PREVIEW_URL,
 } from './constants';
 import {customDocumentActions} from './plugins/custom-document-actions';
 import {locations} from './presentation/locations';
@@ -61,7 +62,10 @@ export function defineSanityConfig(
       customDocumentActions({shopifyStoreDomain: config.shopifyStoreDomain}),
       media(),
       presentationTool({
-        previewUrl: {previewMode: {enable: SANITY_STUDIO_PREVIEW_URL}},
+        previewUrl: {
+          ...(SANITY_STUDIO_PREVIEW_ORIGIN && {origin: SANITY_STUDIO_PREVIEW_ORIGIN}),
+          previewMode: {enable: SANITY_STUDIO_PREVIEW_URL},
+        },
         resolve: {
           locations,
         },

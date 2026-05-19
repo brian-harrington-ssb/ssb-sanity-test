@@ -49,7 +49,6 @@ import sertaAlignmentSection from './objects/sections/serta-alignment-section';
 import sertaBrandHistory from './objects/sections/serta-brand-history';
 import sertaHeroCarousel from './objects/sections/serta-hero-carousel';
 import sertaPerfectSleeperFeature from './objects/sections/serta-perfect-sleeper-feature';
-import sertaPromoBanner from './objects/sections/serta-promo-banner';
 import sertaQualityGuaranteed from './objects/sections/serta-quality-guaranteed';
 import sertaShopByCollection from './objects/sections/serta-shop-by-collection';
 import sertaShopByType from './objects/sections/serta-shop-by-type';
@@ -100,7 +99,6 @@ const sections = [
   richtextSection,
   collectionProductGrid,
   collectionBanner,
-  sertaPromoBanner,
   sertaHeroCarousel,
   sertaShopByCollection,
   sertaShopByType,

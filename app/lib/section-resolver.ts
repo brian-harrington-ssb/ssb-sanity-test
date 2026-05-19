@@ -14,7 +14,6 @@ import {SertaAlignmentSection} from '~/components/sections/serta/serta-alignment
 import {SertaBrandHistorySection} from '~/components/sections/serta/serta-brand-history';
 import {SertaHeroCarouselSection} from '~/components/sections/serta/serta-hero-carousel';
 import {SertaPerfectSleeperFeatureSection} from '~/components/sections/serta/serta-perfect-sleeper-feature';
-import {SertaPromoBannerSection} from '~/components/sections/serta/serta-promo-banner';
 import {SertaQualityGuaranteedSection} from '~/components/sections/serta/serta-quality-guaranteed';
 import {SertaShopByCollectionSection} from '~/components/sections/serta/serta-shop-by-collection';
 import {SertaShopByTypeSection} from '~/components/sections/serta/serta-shop-by-type';
@@ -40,7 +39,6 @@ export const sections: {
   sertaBrandHistory: SertaBrandHistorySection,
   sertaHeroCarousel: SertaHeroCarouselSection,
   sertaPerfectSleeperFeature: SertaPerfectSleeperFeatureSection,
-  sertaPromoBanner: SertaPromoBannerSection,
   sertaQualityGuaranteed: SertaQualityGuaranteedSection,
   sertaShopByCollection: SertaShopByCollectionSection,
   sertaShopByType: SertaShopByTypeSection,
