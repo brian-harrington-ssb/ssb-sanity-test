@@ -34,6 +34,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build and Publish to Oxygen
-        run: pnpm shopify hydrogen deploy --force
+        run: pnpm shopify hydrogen deploy --force --env-branch ${{ github.ref_name }}
         env:
           SHOPIFY_HYDROGEN_DEPLOYMENT_TOKEN: ${{ secrets.OXYGEN_DEPLOYMENT_TOKEN_1000139616 }}
