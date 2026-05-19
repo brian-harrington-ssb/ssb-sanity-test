@@ -173,15 +173,15 @@ export function SertaHeroCarouselSection({
           })}
         </CarouselContent>
 
-        {showArrows && hasMultiple && (
+        {(showArrows ?? true) && hasMultiple && (
           <>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="left-4 border border-white/40 bg-black/30 text-white hover:bg-black/55 disabled:opacity-40" />
+            <CarouselNext className="right-4 border border-white/40 bg-black/30 text-white hover:bg-black/55 disabled:opacity-40" />
           </>
         )}
       </div>
 
-      {showDots && hasMultiple && <CarouselPagination />}
+      {(showDots ?? true) && hasMultiple && <CarouselPagination />}
     </Carousel>
   );
 }

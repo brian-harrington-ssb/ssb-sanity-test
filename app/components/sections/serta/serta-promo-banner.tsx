@@ -28,41 +28,29 @@ export function SertaPromoBannerSection({
         textAlign: 'center',
       }}
     >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: '0 auto',
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 8,
-        }}
-      >
-        {data.message && (
-          <p
-            data-sanity={encodeDataAttribute?.('message')}
-            style={{fontSize: 13, fontWeight: 500, margin: 0, color: fg}}
-          >
-            {data.message}
-          </p>
-        )}
-        {data.ctaText && data.ctaUrl && (
-          <a
-            data-sanity={encodeDataAttribute?.('ctaUrl')}
-            href={data.ctaUrl}
-            style={{
-              fontSize: 13,
-              fontWeight: 700,
-              color: '#FFD966',
-              textDecoration: 'underline',
-              textUnderlineOffset: 2,
-            }}
-          >
-            {data.ctaText}
-          </a>
-        )}
-      </div>
+      {data.message && (
+        <p
+          data-sanity={encodeDataAttribute?.('message')}
+          style={{fontSize: 13, fontWeight: 500, margin: 0, color: fg}}
+        >
+          {data.message}
+        </p>
+      )}
+      {data.ctaText && data.ctaUrl && (
+        <a
+          data-sanity={encodeDataAttribute?.('ctaUrl')}
+          href={data.ctaUrl}
+          style={{
+            fontSize: 13,
+            fontWeight: 700,
+            color: '#FFD966',
+            textDecoration: 'underline',
+            textUnderlineOffset: 2,
+          }}
+        >
+          {data.ctaText}
+        </a>
+      )}
     </div>
   );
 }
