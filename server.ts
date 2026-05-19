@@ -57,7 +57,7 @@ export default {
       let message = 'An unexpected error occurred';
 
       if (errorString.includes('Missing environment variable')) {
-        message = errorString;
+        message = 'Missing environment variable';
       }
 
       console.error(error);
