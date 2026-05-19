@@ -37,17 +37,14 @@ export function AppLayout({children = null}: LayoutProps) {
         </main>
         <SertaFooter />
         <TailwindIndicator />
-        {sanityPreviewMode ? (
-          <ClientOnly fallback={null}>
-            {() => (
-              <Suspense>
-                <VisualEditing />
-              </Suspense>
-            )}
-          </ClientOnly>
-        ) : (
-          <TogglePreviewMode />
-        )}
+        <ClientOnly fallback={null}>
+          {() => (
+            <Suspense>
+              <VisualEditing />
+            </Suspense>
+          )}
+        </ClientOnly>
+        {!sanityPreviewMode && <TogglePreviewMode />}
       </Motion>
     </ShopifyProvider>
   );

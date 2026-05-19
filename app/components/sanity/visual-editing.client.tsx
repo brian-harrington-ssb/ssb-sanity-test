@@ -3,17 +3,17 @@ import {VisualEditing as SanityVisualEditing} from '@sanity/visual-editing/react
 import {cx} from 'class-variance-authority';
 
 import {useIsInIframe} from '~/hooks/use-is-in-iframe';
+import {useRootLoaderData} from '~/root';
 
 export function VisualEditing() {
   const isInIframe = useIsInIframe();
+  const {sanityPreviewMode} = useRootLoaderData();
 
-  return !isInIframe ? (
+  return (
     <>
       <SanityVisualEditing />
-      <ExitBanner />
+      {sanityPreviewMode && !isInIframe && <ExitBanner />}
     </>
-  ) : (
-    <SanityVisualEditing />
   );
 }
 
