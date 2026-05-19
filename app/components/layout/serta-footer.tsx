@@ -123,7 +123,7 @@ export function SertaFooter() {
           {/* Logo + social */}
           <div>
             <Link to="/" aria-label="Serta home" style={{display: 'inline-block', marginBottom: 24}}>
-              <img src="https://www.serta.com/icons/serta-logo.svg" alt="Serta" width="80" style={{display: 'block', filter: 'brightness(0) invert(1)'}} />
+              <img src="/serta-logo.svg" alt="Serta" width="80" style={{display: 'block', filter: 'brightness(0) invert(1)'}} />
             </Link>
             <div style={{display: 'flex', gap: 16}}>
               {SOCIAL.map(s => (

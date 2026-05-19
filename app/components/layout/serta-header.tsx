@@ -18,12 +18,12 @@ const MAIN_NAV = [
 ];
 
 const MEGA_SIZES = [
-  {label: 'Twin',     href: '/collections/mattresses'},
-  {label: 'Twin XL',  href: '/collections/mattresses'},
-  {label: 'Full',     href: '/collections/mattresses'},
-  {label: 'Queen',    href: '/collections/mattresses'},
-  {label: 'King',     href: '/collections/mattresses'},
-  {label: 'Cal King', href: '/collections/mattresses'},
+  {label: 'Twin',     href: '/collections/shop-twin-size-mattresses'},
+  {label: 'Twin XL',  href: '/collections/shop-twin-xl-size-mattresses'},
+  {label: 'Full',     href: '/collections/shop-full-size-mattresses'},
+  {label: 'Queen',    href: '/collections/shop-queen-size-mattress'},
+  {label: 'King',     href: '/collections/shop-king-size-mattress'},
+  {label: 'Cal King', href: '/collections/shop-california-king-size-mattresses'},
 ];
 
 const MEGA_COLS = [
@@ -163,7 +163,7 @@ export function SertaHeader() {
             <p style={{fontSize: 8, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#20374D', marginBottom: 4, whiteSpace: 'nowrap'}}>
               WE MAKE THE WORLD&rsquo;S BEST MATTRESS.™
             </p>
-            <img src="https://www.serta.com/icons/serta-logo.svg" alt="Serta" width="72" style={{display: 'block', height: 'auto'}} />
+            <img src="/serta-logo.svg" alt="Serta" width="74" height="59" style={{display: 'block'}} />
           </Link>
 
           {/* Right: quiz + cart */}
